@@ -35,8 +35,17 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git checkout -b main || git checkout main
-          git checkout dev -- manifest.json background.js content.js images/
-          git add manifest.json background.js content.js images/
+          
+          # Remove all files first to keep main clean
+          rm -rf extension/ README-DEV.md .github/ extension/package.json extension/package-lock.json extension/src/ extension/tsconfig.json extension/svelte.config.js extension/tailwind.config.js extension/postcss.config.js extension/vite.config.ts extension/.gitignore extension/public/ vite.config.ts .gitignore favicon.png
+          
+          # Copy only production files from dev
+          git checkout dev -- manifest.json background.js content.js images/ README.md
+          git checkout dev -- extension/dist
+          
+          # Add only production files
+          git add manifest.json background.js content.js images/ README.md
           git add -f extension/dist/
+          
           git commit -m "release: auto-build from dev" || echo "nothing to commit"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main
