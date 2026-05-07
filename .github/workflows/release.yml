@@ -1,0 +1,38 @@
+name: Release to main
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Build
+        run: |
+          cd extension
+          npm install
+          npm run build
+
+      - name: Push to main
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git checkout main
+          git checkout dev -- manifest.json background.js content.js images/
+          cp -r extension/dist extension/dist
+          git add manifest.json background.js content.js images/ extension/dist/
+          git commit -m "release: auto-build from dev" || echo "nothing to commit"
+          git push origin main
