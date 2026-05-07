@@ -35,4 +35,4 @@ jobs:
           git add manifest.json background.js content.js images/
           git add -f extension/dist/
           git commit -m "release: auto-build from dev" || echo "nothing to commit"
-          git push origin main
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main
