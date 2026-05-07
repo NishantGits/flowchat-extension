@@ -88,8 +88,16 @@ The extension automatically:
 - Try clicking the extension icon instead
 - Ensure the extension has proper permissions
 
-### Getting Help
-- **GitHub Issues**: [Report bugs here](https://github.com/NishantGits/flowchat-extension/issues)
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+## 📞 Support
+
+- **Website**: [flowchats.org](https://flowchats.org)
+- **GitHub**: [NishantGits/flowchat-extension](https://github.com/NishantGits/flowchat-extension)
+- **Issues**: [Report issues](https://github.com/NishantGits/flowchat-extension/issues)
+- **Discussions**: [Ask questions](https://github.com/NishantGits/flowchat-extension/discussions)
 - **Documentation**: [Full documentation](https://docs.flowchats.org)
 - **Support**: Contact through FlowChat support email [here](mailto:contact@flowchats.org)
 
