@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git checkout main
+          git checkout -b main || git checkout main
           git checkout dev -- manifest.json background.js content.js images/
           cp -r extension/dist extension/dist
           git add manifest.json background.js content.js images/ extension/dist/
